@@ -69,7 +69,7 @@ export class RegisterLoginComponent implements OnInit {
       }
     }
     else {
-      alert('Looks like you don\'t have an account. Please register.');
+      alert(`Looks like you've either entered the wrong credentials or you don't have an account with us.`);
     }
   }
 }
