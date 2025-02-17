@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import { RegisterLoginComponent } from './register-login/register-login.component';
-
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-root',
-  imports: [RegisterLoginComponent],
-  template: `<app-register-login></app-register-login>`
+  imports: [RouterModule],
+  template: `<router-outlet></router-outlet>`
 })
-export class AppComponent {
-  title = 'project-management-dashboard';
-}
+export class AppComponent {}

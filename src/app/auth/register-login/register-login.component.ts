@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface RegisterCredentials {
   name: string,
@@ -21,12 +22,16 @@ interface User {
 
 @Component({
   selector: 'app-register-login',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './register-login.component.html',
   styleUrl: './register-login.component.scss'
 })
 
 export class RegisterLoginComponent implements OnInit {
+  // Inject Router using the inject() function
+  private router = inject(Router);
+
   users: User[] = [];
 
   registerObj: RegisterCredentials = {
@@ -63,7 +68,7 @@ export class RegisterLoginComponent implements OnInit {
     const user = this.users.find(user => user.email === this.loginObj.email);
     if (user) {
       if (user.password === this.loginObj.password) {
-        alert(`Welcome ${user.name}!`);
+        this.router.navigate(['/home']);
       } else {
         alert('Incorrect password');
       }
