@@ -13,26 +13,11 @@ import { RouterLink } from '@angular/router';
           <li routerLink="/dashboard">Dashboard</li>
         </ul>
       </nav>
+      <div class="logout-btn">
+        <button routerLink="/">Logout</button>
+      </div>
     </header>
   `,
-  styles: `
-    header {
-      background-color: #333;
-      padding: 1.5em 1em;
-      font-size: 1.25em;
-    }
-
-    ul {
-      display: flex;
-      gap: 1em;
-      color: #fff;
-      font-variant: small-caps;
-    }
-
-    li {
-      list-style: none;
-      cursor: pointer;
-    }
-  `
+  styleUrl: './header.component.scss'
 })
 export class HeaderComponent {}

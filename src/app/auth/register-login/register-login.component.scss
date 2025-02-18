@@ -117,15 +117,15 @@
 #chk {
 	display: none;
 
-  &:checked ~ .register {
-    display: none; /* Hide login when checkbox is checked */
+  &:checked ~ .login {
+    display: none; /* Hide register when checkbox is checked */
   }
 
-  &:checked ~ .login {
-    display: block; /* Show register when checkbox is checked */
+  &:checked ~ .register {
+    display: block; /* Show login when checkbox is checked */
   }
 }
 
-.login {
-  display: none; /* Hide register by default */
+.register {
+  display: none; /* Hide login by default */
 }
