@@ -9,8 +9,8 @@ import { RouterLink } from '@angular/router';
       <nav>
         <ul>
           <li routerLink="/home">Home</li>
-          <li routerLink="/manage" (click)="onManage()">Manage</li>
-          <li routerLink="/dashboard" (click)="onDashboard()">Dashboard</li>
+          <li routerLink="/manage">Manage</li>
+          <li routerLink="/dashboard">Dashboard</li>
         </ul>
       </nav>
     </header>
@@ -22,13 +22,11 @@ import { RouterLink } from '@angular/router';
       font-size: 1.25em;
     }
 
-    nav {
-      ul {
-        display: flex;
-        gap: 1em;
-        color: #fff;
-        font-variant: small-caps;
-      }
+    ul {
+      display: flex;
+      gap: 1em;
+      color: #fff;
+      font-variant: small-caps;
     }
 
     li {
@@ -37,12 +35,4 @@ import { RouterLink } from '@angular/router';
     }
   `
 })
-export class HeaderComponent {
-  onManage() {
-    alert('You clicked on Manage!');
-  }
-
-  onDashboard() {
-    alert('You clicked on Dashboard!');
-  }
-}
+export class HeaderComponent {}
