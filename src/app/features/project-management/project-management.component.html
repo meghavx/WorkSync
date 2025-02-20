@@ -1,1 +1,44 @@
-<p>project-management works!</p>
+<app-header></app-header>
+<div class="project-container">
+    <label for="teamSelect">Select Team:</label>
+    <select id="teamSelect" [(ngModel)]="selectedTeam">
+      <option *ngFor="let team of teams" [value]="team">{{ team }}</option>
+    </select>
+  
+    <form [formGroup]="projectForm">
+      <label>Project Status:</label>
+      <input formControlName="status" placeholder="Update status for this week" />
+  
+      <label>Next Week's Focus:</label>
+      <input formControlName="nextFocus" placeholder="Set focus for next week" />
+  
+      <button type="button" (click)="previewChanges()">Preview</button>
+    </form>
+  
+    <div class="tasks">
+      <h3>Jira Tasks</h3>
+      <div class="task-section">
+        <h4>In Progress</h4>
+        <input #inProgressTask placeholder="Add task..." />
+        <button (click)="addTask('in-progress', inProgressTask.value); inProgressTask.value = ''">Add</button>
+        <ul>
+          <li *ngFor="let task of inProgressTasks">{{ task.desc }}</li>
+        </ul>
+      </div>
+  
+      <div class="task-section">
+        <h4>Done</h4>
+        <input #doneTask placeholder="Add task..." />
+        <button (click)="addTask('done', doneTask.value); doneTask.value = ''">Add</button>
+        <ul>
+          <li *ngFor="let task of doneTasks">{{ task.desc }}</li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="preview">
+      <h3>Preview</h3>
+      <p><strong>Project Status:</strong> {{ projectStatus }}</p>
+      <p><strong>Next Week's Focus:</strong> {{ nextWeekFocus }}</p>
+    </div>
+  </div>
