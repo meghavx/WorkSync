@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProjectService, Project } from '../project.service';
+import { ProjectService, Project } from '../../project.service';
 import { Router, RouterModule } from '@angular/router';
-import { HeaderComponent } from '../../header/header.component';
+import { HeaderComponent } from '../../../header/header.component';
 
 @Component({
   selector: 'app-dashboard',

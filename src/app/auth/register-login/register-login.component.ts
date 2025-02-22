@@ -68,7 +68,7 @@ export class RegisterLoginComponent implements OnInit {
     const user = this.users.find(user => user.email === this.loginObj.email);
     if (user) {
       if (user.password === this.loginObj.password) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/dev-dashboard']);
       } else {
         alert('Incorrect password');
       }

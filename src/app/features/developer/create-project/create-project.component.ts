@@ -22,6 +22,6 @@ export class CreateProjectComponent {
 
   addProject() {
     this.projectService.addProject({ ...this.newProject });
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/dev-dashboard']);
   }
 }

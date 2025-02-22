@@ -1,0 +1,21 @@
+.plus-icon-box {
+    width: 300px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    border: 10px solid #42526e; /* Solid border for the box */
+    border-radius: 10px; /* Rounded corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10em; /* Icon size */
+    color: #42526e;
+    margin: 20px auto; /* Center the box */
+    cursor: pointer;
+  }
+  
+  .plus-icon-box i {
+    margin: 0;
+  }
+   
+  i {
+    font-size: 100px;
+  }
