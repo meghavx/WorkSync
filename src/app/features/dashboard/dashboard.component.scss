@@ -1,0 +1,17 @@
+.create-option {
+    cursor: pointer;
+    height: 200px; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .border-dashed {
+    border-style: dashed !important;
+  }
+  
+  .plus-icon {
+    font-size: 3em;
+    color: #42526e;
+  }

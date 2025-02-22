@@ -1,0 +1,18 @@
+<div class="container mt-4 d-flex justify-content-center">
+  <div class="card" style="max-width: 600px;">
+    <div class="card-body">
+      <h2 class="card-title text-center">Create a new project</h2>
+      <div class="mb-3">
+        <label for="projectName" class="form-label">Project Name</label>
+        <input type="text" class="form-control" id="projectName" placeholder="Project Name" [(ngModel)]="newProject.name">
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" rows="3" [(ngModel)]="newProject.description"></textarea>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary" (click)="addProject()">Add Project</button>
+      </div>
+    </div>
+  </div>
+</div>

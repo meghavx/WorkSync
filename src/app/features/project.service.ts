@@ -1,31 +1,27 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+export interface Project {
+  id: number;
+  name: string;
+  description: string;
+}
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProjectService {
-  private readonly TEAM_KEY = 'teams';
+  private projects: Project[] = [];
+  private projectsSubject = new BehaviorSubject<Project[]>(this.projects); // Corrected
+  projects$ = this.projectsSubject.asObservable();
 
-  constructor() {
-    // Initialize teams in local storage if not already set
-    if (!localStorage.getItem(this.TEAM_KEY)) {
-      localStorage.setItem(this.TEAM_KEY, JSON.stringify(["Frontend Team", "Backend Team", "DevOps Team"]));
-    }
+  addProject(project: Project) {
+    project.id = Date.now();
+    this.projects.push(project);
+    this.projectsSubject.next([...this.projects]); // Corrected
   }
 
-  getTeams(): string[] {
-    return JSON.parse(localStorage.getItem(this.TEAM_KEY) || '[]');
-  }
-
-  saveProjectStatus(status: string, nextWeekFocus: string): void {
-    localStorage.setItem('projectStatus', status);
-    localStorage.setItem('nextWeekFocus', nextWeekFocus);
-  }
-
-  getProjectStatus(): { status: string; nextWeekFocus: string } {
-    return {
-      status: localStorage.getItem('projectStatus') || '',
-      nextWeekFocus: localStorage.getItem('nextWeekFocus') || ''
-    };
+  getProject(id: number): Project | undefined {
+    return this.projects.find((project) => project.id === id);
   }
 }
