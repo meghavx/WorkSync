@@ -2,17 +2,21 @@ header {
   display: flex;
   justify-content: space-between;    
   background-color: #5D3FD3;
-  max-height: 10vh;
+  color: white;
+  max-height: 3.5em;
   padding: 1em;
   font-size: 1.25em;
+  font-family: 'Roboto', sans-serif;
+
+  > div {
+    font-weight: bold;
+  }
 }
 
 ul {
   display: flex;
   gap: 1em;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
-  font-variant: small-caps;
 }
 
 li {
