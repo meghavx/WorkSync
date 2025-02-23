@@ -9,7 +9,7 @@ import { HeaderComponent } from '../../../header/header.component';
   standalone: true,
   imports: [CommonModule, HeaderComponent, RouterModule],
   templateUrl: './dashboard.component.html',
-  styles: [],
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
   projects: Project[] = [];

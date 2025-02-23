@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { RegisterLoginComponent } from './auth/register-login/register-login.component';
 import { CreateProjectComponent } from './features/developer/create-project/create-project.component';
 import { DashboardComponent } from './features/developer/dashboard/dashboard.component';
-import { ProjectDetailsComponent } from './features/project-manager/project-details.component';
+import { ProjectDetailsComponent } from './features/project-manager/dashboard/dashboard.component';
 
 export const routes: Routes = [
   { path: '', component: RegisterLoginComponent },

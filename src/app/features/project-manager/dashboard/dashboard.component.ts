@@ -1,20 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { ProjectService, Project } from '../project.service';
-import { HeaderComponent } from '../../header/header.component';
+import { ProjectService, Project } from '../../project.service';
+import { HeaderComponent } from '../../../header/header.component';
 
 @Component({
   selector: 'app-project-details',
   standalone: true,
   imports: [HeaderComponent, CommonModule],
-  template: `
-    <app-header></app-header>
-    <div *ngIf="project">
-      <h2>{{ project.name }}</h2>
-      <p>Description: {{ project.description }}</p>
-    </div>
-  `,
+  templateUrl: './dashboard.component.html' 
 })
 export class ProjectDetailsComponent implements OnInit {
   project: Project | undefined;
