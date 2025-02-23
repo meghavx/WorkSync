@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container mt-4">
+  <h1 class="project-title">{{ project?.name }}</h1>
+  <div class="description">
+    <h2>Description</h2>
+    <p>{{ project?.description }}</p>
+  </div>
+
+  <button class="btn btn-primary mb-3" (click)="toggleAddTaskForm()">Add Task</button>
+
+  <app-create-task
+    *ngIf="showAddTaskForm"
+    (taskAdded)="addTask($event)"
+    (cancel)="cancelAddTask()"
+  ></app-create-task>
+
+  <table class="table table-striped" *ngIf="tasks.length > 0">
+    <thead>
+      <tr>
+        <th>Task Name</th>
+        <th>Assignee</th>
+        <th>Start Date</th>
+        <th>Launch Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.name }}</td>
+        <td>{{ task.assignee }}</td>
+        <td>{{ task.startDate | date }}</td>
+        <td>{{ task.launchDate | date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

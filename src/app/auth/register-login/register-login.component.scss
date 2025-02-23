@@ -2,11 +2,17 @@
 
 .container {
   font-family: 'Poppins', sans-serif;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #5D3FD3;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
 }
 
 .wrapper {

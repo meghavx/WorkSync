@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProjectService, Project } from '../../project.service';
 import { Router } from '@angular/router';
+import { HeaderComponent } from "../../../header/header.component";
 
 @Component({
   selector: 'app-create-project',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HeaderComponent],
   templateUrl: './create-project.component.html',
   styles: [], // Bootstrap handles styling
 })
@@ -15,7 +16,8 @@ export class CreateProjectComponent {
   newProject: Project = {
     id: 0,
     name: '',
-    description: ''
+    description: '',
+    tasks: []
   };
 
   constructor(private projectService: ProjectService, private router: Router) {}

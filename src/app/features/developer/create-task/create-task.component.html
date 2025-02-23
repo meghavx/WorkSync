@@ -1,0 +1,21 @@
+<div class="card p-3 mb-3">
+    <h3>Add New Task</h3>
+    <div class="mb-3">
+      <label>Task Name:</label>
+      <input type="text" class="form-control" [(ngModel)]="newTask.name" />
+    </div>
+    <div class="mb-3">
+      <label>Assignee:</label>
+      <input type="text" class="form-control" [(ngModel)]="newTask.assignee" />
+    </div>
+    <div class="mb-3">
+      <label>Start Date:</label>
+      <input type="date" class="form-control" [(ngModel)]="newTask.startDate" />
+    </div>
+    <div class="mb-3">
+      <label>Launch Date:</label>
+      <input type="date" class="form-control" [(ngModel)]="newTask.launchDate" />
+    </div>
+    <button class="btn btn-success me-2" (click)="addTask()">Add</button>
+    <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  </div>
