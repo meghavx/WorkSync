@@ -15,7 +15,7 @@ import { HeaderComponent } from "../../../header/header.component";
 export class CreateProjectComponent {
   newProject: Project = {
     id: 0,
-    name: '',
+    title: '',
     description: '',
     tasks: []
   };

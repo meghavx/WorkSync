@@ -1,0 +1,9 @@
+<ng-container *ngIf="userService.userContext$ | async">
+  <button (click)="logout()">Log out</button>
+  <router-outlet></router-outlet>
+</ng-container>
+
+<ng-container *ngIf="!(userService.userContext$ | async)">
+  <router-outlet></router-outlet>
+</ng-container>
+<router-outlet></router-outlet>

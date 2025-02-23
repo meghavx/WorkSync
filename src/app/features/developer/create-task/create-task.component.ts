@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Task } from '../../project.service';
+import { Task, TaskStatus } from '../../project.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,14 +11,14 @@ import { CommonModule } from '@angular/common';
 //   styleUrls: ['./create-task.component.scss'],
 })
 export class CreateTaskComponent {
-  newTask: Task = { name: '', assignee: '', startDate: new Date(), launchDate: new Date() };
+  newTask: Task = { jira_ticket: 0, title: '', assignee: '', status: TaskStatus.InProgress };
 
   @Output() taskAdded = new EventEmitter<Task>();
   @Output() cancel = new EventEmitter<void>();
 
   addTask() {
     this.taskAdded.emit(this.newTask);
-    this.newTask = { name: '', assignee: '', startDate: new Date(), launchDate: new Date() }; // Reset form
+    this.newTask = { jira_ticket: 0, title: '', assignee: '',  status: TaskStatus.InProgress }; // Reset form
   }
 
   onCancel() {

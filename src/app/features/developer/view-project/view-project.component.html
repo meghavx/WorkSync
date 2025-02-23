@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="container mt-4">
-  <h1 class="project-title">{{ project?.name }}</h1>
+  <h1 class="project-title">{{ project?.title }}</h1>
   <div class="description">
     <h2>Description</h2>
     <p>{{ project?.description }}</p>
@@ -17,18 +17,18 @@
   <table class="table table-striped" *ngIf="tasks.length > 0">
     <thead>
       <tr>
-        <th>Task Name</th>
+        <th>Jira Ticket #</th>
+        <th>Title</th>
         <th>Assignee</th>
-        <th>Start Date</th>
-        <th>Launch Date</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let task of tasks">
-        <td>{{ task.name }}</td>
+        <td>{{ task.jira_ticket }}</td>
+        <td>{{ task.title }}</td>
         <td>{{ task.assignee }}</td>
-        <td>{{ task.startDate | date }}</td>
-        <td>{{ task.launchDate | date }}</td>
+        <td>{{ task.status }}</td>
       </tr>
     </tbody>
   </table>
