@@ -1,25 +1,24 @@
-<div class="card p-3 mb-3">
-    <h3>Add New Task</h3>
+<div class="card p-3 mb-3 mt-4">
+    <!-- <h3>Add New Task</h3> -->
     <div class="mb-3">
-      <label>Jira Ticket #:</label>
+      <label class="fw-bold">Ticket #</label>
       <input type="text" class="form-control" [(ngModel)]="newTask.jira_ticket" />
     </div>
     <div class="mb-3">
-      <label>Title:</label>
+      <label class="fw-bold">Title</label>
       <input type="text" class="form-control" [(ngModel)]="newTask.title" />
     </div>
     <div class="mb-3">
-      <label>Assignee:</label>
+      <label class="fw-bold">Assignee</label>
       <input type="text" class="form-control" [(ngModel)]="newTask.assignee" />
     </div>
     <div class="mb-3">
-      <label>Status:</label>
+      <label class="fw-bold">Status</label>
       <select class="form-control" [(ngModel)]="newTask.status">
-        <option value="In-progress">In-progress</option>
-        <option value="Done">Done</option>
-        <option value="Blocked">Blocked</option>
+        <option value="" disabled>Choose task status</option>
+        <option *ngFor="let taskStatus of taskStatusOptions" [value]="taskStatus">{{ taskStatus }}</option>
       </select>
     </div>
-    <button class="btn btn-success me-2" (click)="addTask()">Add</button>
+    <button class="btn btn-success me-2 mt-2" (click)="addTask()">Add</button>
     <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
   </div>

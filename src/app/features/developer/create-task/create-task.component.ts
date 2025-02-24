@@ -11,7 +11,14 @@ import { CommonModule } from '@angular/common';
 //   styleUrls: ['./create-task.component.scss'],
 })
 export class CreateTaskComponent {
-  newTask: Task = { jira_ticket: 0, title: '', assignee: '', status: TaskStatus.InProgress };
+  taskStatusOptions = Object.values(TaskStatus);
+
+  newTask: Task = { 
+    jira_ticket: 0, 
+    title: '', 
+    assignee: '', 
+    status: '' as TaskStatus 
+  };
 
   @Output() taskAdded = new EventEmitter<Task>();
   @Output() cancel = new EventEmitter<void>();

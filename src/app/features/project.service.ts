@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 export interface Project {
   id: number;
   title: string;
+  team: Team;
   description: string;
   tasks: Task[];
 }
@@ -23,7 +24,9 @@ export interface Task {
 }
 
 export enum TaskStatus {
+  YetToStart = 'Yet to start',
   InProgress = 'In-progress',
+  ReadyForReview = 'Ready for review',
   Done = 'Done',
   Blocked = 'Blocked'
 }
@@ -33,18 +36,18 @@ export enum TaskStatus {
 })
 export class ProjectService {
   private projects: Project[] = [];
-  private projectsSubject = new BehaviorSubject<Project[]>(this.projects); // Corrected
+  private projectsSubject = new BehaviorSubject<Project[]>(this.projects);
   projects$ = this.projectsSubject.asObservable();
 
   constructor() {
-    this.loadProjectsFromLocalStorage(); // Load projects on service initialization
+    this.loadProjectsFromLocalStorage();
   }
 
   private loadProjectsFromLocalStorage() {
     const projectsData = localStorage.getItem('projects');
     if (projectsData) {
       this.projects = JSON.parse(projectsData);
-      this.projectsSubject.next([...this.projects]); // Notify subscribers
+      this.projectsSubject.next([...this.projects]);
     }
   }
 
@@ -56,7 +59,7 @@ export class ProjectService {
     project.id = Date.now();
     this.projects.push(project);
     this.saveProjectsToLocalStorage();
-    this.projectsSubject.next([...this.projects]); // Corrected
+    this.projectsSubject.next([...this.projects]);
   }
 
   getProject(id: number): Project | undefined {
