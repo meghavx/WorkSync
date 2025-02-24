@@ -8,10 +8,10 @@ import { ViewProjectComponent } from './features/developer/view-project/view-pro
 
 export const routes: Routes = [
   { path: '', component: RegisterLoginComponent },
-  // { path: 'home', component: HomeComponent },
   { path: 'create-project', component: CreateProjectComponent },
+  { path: 'create-project/:id', component: CreateProjectComponent },
   { path: 'dev-dashboard', component: DashboardComponent },
   { path: 'pm-dashboard', component: ProjectDetailsComponent },
   { path: 'register-login', component: RegisterLoginComponent },
   { path: 'project/:id', component: ViewProjectComponent }
-];
+]

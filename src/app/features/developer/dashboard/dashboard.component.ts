@@ -25,6 +25,10 @@ export class DashboardComponent {
   }
 
   navigateToCreateProject() {
-    this.router.navigate(['/create-project']); // Correct navigation
+    this.router.navigate(['/create-project']);
+  }
+
+  editProject(projectId: number) {
+    this.router.navigate(['/create-project', projectId]);
   }
 }

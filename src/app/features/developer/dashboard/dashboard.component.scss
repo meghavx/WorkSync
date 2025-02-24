@@ -10,8 +10,11 @@
   flex-direction: column;
 }
 
-.view-btn {
-  padding: 0.5em 1em;
+.view-btn, .edit-btn {
+  min-width: 4em;
+  background-color: lightgray;
+  border-radius: 1em;
+  margin-right: 0.25em;
 }
 
 .plus-icon-box {
