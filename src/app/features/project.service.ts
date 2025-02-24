@@ -74,4 +74,11 @@ export class ProjectService {
       this.projectsSubject.next([...this.projects]);
     }
   }
+
+  deleteProject(projectId: number) {
+    if (window.confirm('Are you sure you want to delete this project?')) {
+      this.projects = this.projects.filter(project => project.id !== projectId);
+      this.projectsSubject.next([...this.projects]);
+    }
+  }
 }

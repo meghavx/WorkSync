@@ -31,4 +31,8 @@ export class DashboardComponent {
   editProject(projectId: number) {
     this.router.navigate(['/create-project', projectId]);
   }
+
+  deleteProject(projectId: number) {
+    this.projectService.deleteProject(projectId);
+  }
 }
