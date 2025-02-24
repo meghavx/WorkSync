@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div class="container mt-4">
+  <h1 class="project-title">{{ project?.title }}</h1>
+  <div class="description mt-4 fw-bold">About:
+    <p class="fw-normal">{{ project?.description }}</p>
+  </div>
+
+  <div class="project-team fw-bold">Team:
+    <p class="fw-normal">{{ project?.team }}</p>
+  </div>
+
+  <button class="btn btn-primary mb-3" (click)="toggleAddTaskForm()">Add Task</button>
+
+  <app-create-task
+    *ngIf="showAddTaskForm"
+    (taskAdded)="addTask($event)"
+    (cancel)="cancelAddTask()"
+  ></app-create-task>
+
+  <table class="table table-striped mt-4" *ngIf="tasks.length > 0">
+    <thead>
+      <tr>
+        <th>Jira Ticket #</th>
+        <th>Title</th>
+        <th>Assignee</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.jira_ticket }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.assignee }}</td>
+        <td>{{ task.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

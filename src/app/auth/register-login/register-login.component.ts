@@ -29,7 +29,6 @@ interface User {
 })
 
 export class RegisterLoginComponent implements OnInit {
-  // Inject Router using the inject() function
   private router = inject(Router);
 
   users: User[] = [];
@@ -45,6 +44,9 @@ export class RegisterLoginComponent implements OnInit {
     password: ''
   };
 
+  registerError: string | null = null;
+  loginError: string | null = null;
+
   ngOnInit(): void { 
     const usersData = localStorage.getItem('users');
     if (usersData) {
@@ -53,28 +55,47 @@ export class RegisterLoginComponent implements OnInit {
   }
 
   onRegister() {
-    this.users.push(this.registerObj);
+    // error handling for incomplete registration details
+    this.registerError = null;
+    if (!this.registerObj.name || !this.registerObj.email || !this.registerObj.password) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    // check for existing user
+    const existingUser = this.users.find((user) => user.email === this.registerObj.email);
+    if (existingUser) {
+      alert('Email already exists.');
+      return;
+    }
+
+    this.users.push({ ...this.registerObj });
     localStorage.setItem('users', JSON.stringify(this.users));
-    alert('Registration successful!');
+    alert('Registration successful! Please log in.');
 
     this.registerObj = {
       name: '',
       email: '',
-      password: ''
+      password: '',
     };
+    this.router.navigate(['/register-login']);
   }
 
   onLogin() {
     const user = this.users.find(user => user.email === this.loginObj.email);
-    if (user) {
-      if (user.password === this.loginObj.password) {
-        this.router.navigate(['/home']);
-      } else {
-        alert('Incorrect password');
-      }
+    if (!user) {
+      alert('Invalid email or password.');
+      return;
     }
-    else {
-      alert(`Looks like you've either entered the wrong credentials or you don't have an account with us.`);
-    }
+    if (user.password !== this.loginObj.password) {
+      alert('Incorrect password');
+      return;
+    } 
+
+    // Store login session in localStorage
+    localStorage.setItem('loggedInUser', JSON.stringify(user));
+
+    // Redirect to dashboard
+    this.router.navigate(['/dev-dashboard']);
   }
 }

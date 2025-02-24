@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  background-color: #f8f9f8;
+  height: 100vh;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.view-btn, .edit-btn, .delete-btn {
+  min-width: 4em;
+  background-color: lightgray;
+  border-radius: 1em;
+  margin-right: 0.25em;
+}
+
+.plus-icon-box {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  height: 100px;
+  cursor: pointer;
+}
+
+i {
+  font-size: 70px; /* Increase the font size here */
+}
+
+.create-project-container {
+  flex: 1;
+  justify-content: center;
+  height: 70vh;
+}
+
+.create-project {
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0;
+  display: flex;
+}

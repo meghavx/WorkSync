@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="container mt-4 d-flex justify-content-center">
+  <div class="card" style="max-width: 600px;">
+    <div class="card-body">
+      <h2 class="card-title text-center">{{ isEditMode ? 'Edit Project' : 'Create a new project' }}</h2>
+      <div class="mb-3 mt-4">
+        <label for="projectName" class="form-label fw-bold">Project Name</label>
+        <input type="text" class="form-control" id="projectName" placeholder="Project Name" [(ngModel)]="newProject.title">
+      </div>
+      <div class="mb-3">
+        <label for="team" class="form-label fw-bold">Team</label>
+        <select class="form-control" id="team" [(ngModel)]="newProject.team">
+          <option value="" disabled selected>Select a Team</option>
+          <option *ngFor="let team of teamOptions" [value]="team">{{ team }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label fw-bold">Description</label>
+        <textarea class="form-control" id="description" rows="3" [(ngModel)]="newProject.description"></textarea>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary" (click)="addProject()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
