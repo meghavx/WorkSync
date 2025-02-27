@@ -22,16 +22,20 @@
       <tr>
         <th>Jira Ticket #</th>
         <th>Title</th>
-        <th>Assignee</th>
         <th>Status</th>
+        <th>Assignee</th>
+        <th>Assigned Date</th>
+        <th>Due Date</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let task of tasks">
         <td>{{ task.jira_ticket }}</td>
         <td>{{ task.title }}</td>
-        <td>{{ task.assignee }}</td>
         <td>{{ task.status }}</td>
+        <td>{{ task.assignee }}</td>
+        <td>{{ task.assignedDate }}</td>
+        <td>{{ task.dueDate }}</td>
       </tr>
     </tbody>
   </table>

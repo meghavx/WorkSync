@@ -16,8 +16,10 @@ export class CreateTaskComponent {
   newTask: Task = { 
     jira_ticket: 0, 
     title: '', 
+    status: '' as TaskStatus,
     assignee: '', 
-    status: '' as TaskStatus 
+    assignedDate: new Date(),
+    dueDate: new Date()
   };
 
   @Output() taskAdded = new EventEmitter<Task>();
@@ -25,7 +27,15 @@ export class CreateTaskComponent {
 
   addTask() {
     this.taskAdded.emit(this.newTask);
-    this.newTask = { jira_ticket: 0, title: '', assignee: '',  status: TaskStatus.InProgress }; // Reset form
+    // Reset form
+    this.newTask = { 
+      jira_ticket: 0, 
+      title: '', 
+      status: '' as TaskStatus,
+      assignee: '', 
+      assignedDate: new Date(),
+      dueDate: new Date()
+    };
   }
 
   onCancel() {

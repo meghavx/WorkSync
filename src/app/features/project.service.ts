@@ -12,15 +12,17 @@ export interface Project {
 export enum Team {
   Frontend = 'Frontend',
   Backend = 'Backend',
-  Fullstack = 'Fullstack',
+  FullStack = 'FullStack',
   QA_Testing = 'QA/Testing'
 }
 
 export interface Task {
   jira_ticket: number;
   title: string;
-  assignee: string;
   status: TaskStatus;
+  assignee: string;
+  assignedDate: Date;
+  dueDate: Date; 
 }
 
 export enum TaskStatus {
