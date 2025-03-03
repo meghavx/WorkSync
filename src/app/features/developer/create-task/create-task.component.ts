@@ -61,7 +61,7 @@ export class CreateTaskComponent {
 
     if (this.newTask.jira_ticket && !/^\d+$/.test(this.newTask.jira_ticket.toString())) {
       alert('Jira Ticket # must contain only numeric characters.');
-      return; // Stop the function execution
+      return;
     }
     
     this.taskAdded.emit(this.newTask);

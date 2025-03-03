@@ -17,6 +17,26 @@ import { HeaderComponent } from "../../../header/header.component"; // Import Cr
       border-radius: 1em;
       margin-right: 0.25em;
     }
+
+    @media print {
+      :host {
+        visibility: hidden;
+      }
+
+      #print-section, #print-section * {
+        visibility: visible;
+      }
+
+      .add-task-btn {
+        display: none;
+      }
+
+      #print-section {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
   `,
 })
 export class ViewProjectComponent implements OnInit {
@@ -61,7 +81,7 @@ export class ViewProjectComponent implements OnInit {
 
     if (newTask.jira_ticket && !/^\d+$/.test(newTask.jira_ticket.toString())) {
       alert('Jira Ticket # must contain only numeric characters.');
-      return; // Stop the function execution
+      return;
     }
     
     if (this.project) {
@@ -113,5 +133,9 @@ export class ViewProjectComponent implements OnInit {
         this.tasks = this.project.tasks;
       }
     }
+  }
+
+  exportProgress() {
+    window.print(); // Triggers browser's print dialog (PDF option available)
   }
 }

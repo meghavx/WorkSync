@@ -1,15 +1,50 @@
 <app-header></app-header>
 <div class="container mt-4">
-  <h1 class="project-title">{{ project?.title }}</h1>
-  <div class="description mt-4 fw-bold">About:
-    <p class="fw-normal">{{ project?.description }}</p>
+  <div style="display: flex; justify-content: flex-end; align-items: flex-end;">
+    <button class="btn btn-primary" (click)="exportProgress()">Export Progress</button>
   </div>
 
-  <div class="project-team fw-bold">Team:
-    <p class="fw-normal">{{ project?.team }}</p>
-  </div>
+  <div id="print-section">
+    <h1 class="project-title">{{ project?.title }}</h1>
 
-  <button class="btn btn-primary mb-3" (click)="toggleAddTaskForm()">Add Task</button>
+    <div class="description mt-4 fw-bold">About:
+      <p class="fw-normal">{{ project?.description }}</p>
+    </div>
+
+    <div class="project-team fw-bold">Team:
+      <p class="fw-normal">{{ project?.team }}</p>
+    </div>
+
+    <button class="add-task-btn btn btn-primary mt-3" (click)="toggleAddTaskForm()">Add Task</button>
+
+    <table class="table table-striped mt-4" *ngIf="tasks.length > 0">
+      <thead>
+        <tr>
+          <th>Jira Ticket #</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Assignee</th>
+          <th>Assigned Date</th>
+          <th>Due Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.jira_ticket }}</td>
+          <td>{{ task.title }}</td>
+          <td>{{ task.status }}</td>
+          <td>{{ task.assignee }}</td>
+          <td>{{ task.assignedDate | date: 'yyyy-MM-dd' }}</td>
+          <td>{{ task.dueDate | date: 'yyyy-MM-dd' }}</td>
+          <td>
+            <button class="edit-btn btn btn-light btn-sm" (click)="editTask(task)">Edit</button>
+            <button class="delete-btn btn btn-light btn-sm" (click)="deleteTask(task)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <app-create-task
     *ngIf="showAddTaskForm"
@@ -23,32 +58,4 @@
     (taskAdded)="updateTask($event)"
     (cancel)="cancelEditTask()"
   ></app-create-task>
-  
-  <table class="table table-striped mt-4" *ngIf="tasks.length > 0">
-    <thead>
-      <tr>
-        <th>Jira Ticket #</th>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Assignee</th>
-        <th>Assigned Date</th>
-        <th>Due Date</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let task of tasks">
-        <td>{{ task.jira_ticket }}</td>
-        <td>{{ task.title }}</td>
-        <td>{{ task.status }}</td>
-        <td>{{ task.assignee }}</td>
-        <td>{{ task.assignedDate }}</td>
-        <td>{{ task.dueDate }}</td>
-        <td>
-          <button class="edit-btn btn btn-light btn-sm" (click)="editTask(task)">Edit</button>
-          <button class="delete-btn btn btn-light btn-sm" (click)="deleteTask(task)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>
