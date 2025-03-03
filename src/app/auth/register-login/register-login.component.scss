@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import "@fortawesome/fontawesome-free/css/all.css";
 
 :host {
   display: block;
@@ -140,4 +141,17 @@
 
 .register {
   display: none; /* Hide login by default */
+}
+
+.password-wrapper {
+  position: relative;
+
+  .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+  }
 }

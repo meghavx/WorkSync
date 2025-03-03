@@ -47,6 +47,14 @@ export class RegisterLoginComponent implements OnInit {
   registerError: string | null = null;
   loginError: string | null = null;
 
+  passwordType: string = 'password';
+  passwordIcon: string = 'fa fa-eye-slash'; // Font Awesome icon
+
+  togglePasswordVisibility() {
+    this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
+    this.passwordIcon = this.passwordIcon === 'fa fa-eye-slash' ? 'fa fa-eye' : 'fa fa-eye-slash';
+  }
+  
   ngOnInit(): void { 
     const usersData = localStorage.getItem('users');
     if (usersData) {
