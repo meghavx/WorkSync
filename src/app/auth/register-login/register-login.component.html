@@ -5,18 +5,15 @@
       <h2>Register</h2>
       <form class="form-signin">
         <div class="input-box"><input type="text" name="name" placeholder="Enter your name" required [(ngModel)]="registerObj.name"></div>
-        <div class="input-box"><input type="email" name="email" placeholder="Enter your email" required [(ngModel)]="registerObj.email"></div>
-        <!-- <div class="input-box"><input type="password" name="password" placeholder="Create password" required [(ngModel)]="registerObj.password"></div> -->
+        <div class="input-box">
+          <input type="email" name="email" placeholder="Enter your email" required [(ngModel)]="registerObj.email">
+        </div>
         <div class="input-box password-wrapper">
           <input [type]="passwordType" name="password" placeholder="Create password" required [(ngModel)]="registerObj.password">
           <span class="eye-icon" (click)="togglePasswordVisibility()">
             <i [class]="passwordIcon"></i>
           </span>
         </div>
-        <!-- <div class="input-box"><input type="password" placeholder="Confirm password" required></div> -->
-        <!-- <div class="policy">
-          <input type="checkbox"><h3>I accept all terms & condition</h3>
-        </div> -->
         <div class="input-box button">
           <input (click)="onRegister()" type="Submit" value="Register Now">
         </div>
@@ -31,7 +28,6 @@
       <h2>Login</h2>
       <form>
         <div class="input-box"><input type="email" name="email" placeholder="Enter email" required [(ngModel)]="loginObj.email"></div>
-        <!-- <div class="input-box"><input type="password" name="password" placeholder="Enter password" required [(ngModel)]="loginObj.password"></div> -->
         <div class="input-box password-wrapper">
           <input [type]="passwordType" name="password" placeholder="Enter password" required [(ngModel)]="loginObj.password">
           <span class="eye-icon" (click)="togglePasswordVisibility()">

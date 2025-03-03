@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -23,7 +24,7 @@ interface User {
 @Component({
   selector: 'app-register-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './register-login.component.html',
   styleUrl: './register-login.component.scss'
 })
@@ -44,9 +45,6 @@ export class RegisterLoginComponent implements OnInit {
     password: ''
   };
 
-  registerError: string | null = null;
-  loginError: string | null = null;
-
   passwordType: string = 'password';
   passwordIcon: string = 'fa fa-eye-slash'; // Font Awesome icon
 
@@ -54,7 +52,7 @@ export class RegisterLoginComponent implements OnInit {
     this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
     this.passwordIcon = this.passwordIcon === 'fa fa-eye-slash' ? 'fa fa-eye' : 'fa fa-eye-slash';
   }
-  
+
   ngOnInit(): void { 
     const usersData = localStorage.getItem('users');
     if (usersData) {
@@ -63,8 +61,20 @@ export class RegisterLoginComponent implements OnInit {
   }
 
   onRegister() {
+    // error handling for invalid email address
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.registerObj.email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    // error handling for password shorter than 6 chars
+    if (this.registerObj.password.length < 6) {
+      alert('Password must be at least 6 characters long.');
+      return;
+    }
+
     // error handling for incomplete registration details
-    this.registerError = null;
     if (!this.registerObj.name || !this.registerObj.email || !this.registerObj.password) {
       alert('Please fill in all fields.');
       return;
