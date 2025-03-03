@@ -101,6 +101,16 @@ export class ViewProjectComponent implements OnInit {
   }
 
   updateTask(updatedTask: Task) {
+    if (!updatedTask.title || !updatedTask.jira_ticket) {
+      alert('Jira Ticket # and Title must be present.');
+      return;
+    }
+
+    if (updatedTask.jira_ticket && !/^\d+$/.test(updatedTask.jira_ticket.toString())) {
+      alert('Jira Ticket # must contain only numeric characters.');
+      return;
+    }
+
     if (this.project && this.editedTask) {
       const index = this.project.tasks?.findIndex((t) => t.jira_ticket === this.editedTask?.jira_ticket) ?? -1;
       if (index !== -1 && this.project.tasks) {
