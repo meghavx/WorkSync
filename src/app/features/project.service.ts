@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-
 export interface Project {
   id: number;
   title: string;
@@ -59,6 +58,10 @@ export class ProjectService {
   }
 
   addProject(project: Project) {
+    if (!project.title) {
+      alert('Please add a project title.');
+      return;
+    }
     project.id = Date.now();
     this.projects.push(project);
     this.saveProjectsToLocalStorage();
@@ -70,6 +73,11 @@ export class ProjectService {
   }
 
   updateProject(updatedProject: Project) {
+    if (!updatedProject.title) {
+      alert('Project title cannot be empty.');
+      return;
+    }
+    
     const index = this.projects.findIndex(project => project.id === updatedProject.id);
     if (index !== -1) {
       this.projects[index] = updatedProject;
