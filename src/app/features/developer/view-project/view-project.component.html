@@ -26,7 +26,7 @@
           <th>Assignee</th>
           <th>Assigned Date</th>
           <th>Due Date</th>
-          <th></th>
+          <th class="text-center">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -37,7 +37,7 @@
           <td>{{ task.assignee }}</td>
           <td>{{ task.assignedDate | date: 'yyyy-MM-dd' }}</td>
           <td>{{ task.dueDate | date: 'yyyy-MM-dd' }}</td>
-          <td>
+          <td class="text-center">
             <button class="edit-btn btn btn-light btn-sm" (click)="editTask(task)">Edit</button>
             <button class="delete-btn btn btn-light btn-sm" (click)="deleteTask(task)">Delete</button>
           </td>

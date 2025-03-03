@@ -11,7 +11,7 @@
           <th>Title</th>
           <th>Description</th>
           <th>Team</th>
-          <th></th>
+          <th class="text-center">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -19,7 +19,7 @@
           <td>{{ project.title }}</td>
           <td>{{ project.description }}</td>
           <td>{{ project.team }}</td>
-          <td class="text-end">
+          <td class="text-center">
             <button class="view-btn btn btn-light btn-sm" (click)="navigateToProject(project.id)">View</button>
             <button class="edit-btn btn btn-light btn-sm" (click)="editProject(project.id)">Edit</button>
             <button class="delete-btn btn btn-light btn-sm" (click)="deleteProject(project.id)">Delete</button>
