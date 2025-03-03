@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+
 export interface Project {
   id: number;
   title: string;
@@ -17,12 +18,12 @@ export enum Team {
 }
 
 export interface Task {
-  jira_ticket: number;
+  jira_ticket: string;
   title: string;
   status: TaskStatus;
   assignee: string;
-  assignedDate: Date;
-  dueDate: Date; 
+  assignedDate: string;
+  dueDate: string; 
 }
 
 export enum TaskStatus {

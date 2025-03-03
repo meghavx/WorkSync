@@ -1,37 +1,48 @@
-<div class="card p-3 mb-3 mt-4">
-    <!-- <h3>Add New Task</h3> -->
-    <div class="mb-3">
-      <label class="fw-bold">Ticket #</label>
-      <input type="text" class="form-control" [(ngModel)]="newTask.jira_ticket" />
-    </div>
-    <div class="mb-3">
-      <label class="fw-bold">Title</label>
-      <input type="text" class="form-control" [(ngModel)]="newTask.title" />
-    </div>
-    <div class="mb-3">
-      <label class="fw-bold">Status</label>
-      <select class="form-control" [(ngModel)]="newTask.status">
-        <option value="" disabled>Choose task status</option>
-        <option *ngFor="let taskStatus of taskStatusOptions" [value]="taskStatus">{{ taskStatus }}</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label class="fw-bold">Assignee</label>
-      <input type="text" class="form-control" [(ngModel)]="newTask.assignee" />
-    </div>
-    <div class="mb-3">
-      <label class="fw-bold">Assigned Date</label>
-      <input type="date" class="form-control" [(ngModel)]="newTask.assignedDate" />
-    </div>
-    <div class="mb-3">
-      <label class="fw-bold">Due Date</label>
-      <input type="date" class="form-control" [(ngModel)]="newTask.dueDate" />
-    </div>
-    <div class="d-flex justify-content-center mt-2">
-      <div style="width: 300px;"> <div class="d-flex">
-          <button class="btn btn-primary me-2" style="width: 10em;" (click)="addTask()">Add</button>
-          <button class="btn btn-secondary me-2" style="width: 10em;" (click)="onCancel()">Cancel</button>
+<div class="modal" tabindex="-1" [ngClass]="{'show d-block': showModal, 'd-none': !showModal}">
+  <div class="modal-dialog" style="max-width: 500px;">
+    <div class="modal-content">
+      <div class="modal-header" style="padding: 0.5rem;">
+        <h5 class="modal-title" style="font-size: 14px; margin-bottom: 0;">Add Task</h5>
+        <button type="button" class="btn-close" (click)="onCancel()" style="padding: 0.25rem;"></button>
+      </div>
+      <div class="modal-body" style="padding: 0.5rem;">
+        <div class="container d-flex justify-content-center">
+          <div class="card" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; margin-top: 0.5rem;">
+            <div class="mb-2">
+              <label class="fw-bold" style="font-size: 12px; margin-bottom: 0.25rem;">Ticket #</label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="newTask.jira_ticket" style="font-size: 12px; padding: 0.25rem 0.5rem;" />
+            </div>
+            <div class="mb-2">
+              <label class="fw-bold" style="font-size: 12px; margin-bottom: 0.25rem;">Title</label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="newTask.title" style="font-size: 12px; padding: 0.25rem 0.5rem;" />
+            </div>
+            <div class="mb-2">
+              <label class="fw-bold" style="font-size: 12px; margin-bottom: 0.25rem;">Status</label>
+              <select class="form-control form-control-sm" [(ngModel)]="newTask.status" style="font-size: 12px; padding: 0.25rem 0.5rem;">
+                <option value="" disabled>Choose</option>
+                <option *ngFor="let taskStatus of taskStatusOptions" [value]="taskStatus">{{ taskStatus }}</option>
+              </select>
+            </div>
+            <div class="mb-2">
+              <label class="fw-bold" style="font-size: 12px; margin-bottom: 0.25rem;">Assignee</label>
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="newTask.assignee" style="font-size: 12px; padding: 0.25rem 0.5rem;" />
+            </div>
+            <div class="mb-2">
+              <label class="fw-bold" style="font-size: 12px; margin-bottom: 0.25rem;">Assigned</label>
+              <input type="date" class="form-control form-control-sm" [(ngModel)]="newTask.assignedDate" style="font-size: 12px; padding: 0.25rem 0.5rem;" />
+            </div>
+            <div class="mb-2">
+              <label class="fw-bold" style="font-size: 12px; margin-bottom: 0.25rem;">Due</label>
+              <input type="date" class="form-control form-control-sm" [(ngModel)]="newTask.dueDate" style="font-size: 12px; padding: 0.25rem 0.5rem;" />
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="modal-footer" style="padding: 0.5rem;">
+        <button class="btn btn-primary btn-sm" (click)="addTask()" style="font-size: 12px; padding: 0.25rem 0.5rem;">Add</button>
+        <button class="btn btn-secondary btn-sm" (click)="onCancel()" style="font-size: 12px; padding: 0.25rem 0.5rem;">Cancel</button>
       </div>
     </div>
   </div>
+</div>
+<div class="modal-backdrop" [ngClass]="{'show d-block': showModal, 'd-none': !showModal}"></div>

@@ -17,6 +17,13 @@
     (cancel)="cancelAddTask()"
   ></app-create-task>
 
+  <app-create-task
+    *ngIf="showEditTaskForm"
+    [task]="editedTask"
+    (taskAdded)="updateTask($event)"
+    (cancel)="cancelEditTask()"
+  ></app-create-task>
+  
   <table class="table table-striped mt-4" *ngIf="tasks.length > 0">
     <thead>
       <tr>
@@ -26,6 +33,7 @@
         <th>Assignee</th>
         <th>Assigned Date</th>
         <th>Due Date</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -36,6 +44,10 @@
         <td>{{ task.assignee }}</td>
         <td>{{ task.assignedDate }}</td>
         <td>{{ task.dueDate }}</td>
+        <td>
+          <button class="edit-btn btn btn-light btn-sm" (click)="editTask(task)">Edit</button>
+          <button class="delete-btn btn btn-light btn-sm" (click)="deleteTask(task)">Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
